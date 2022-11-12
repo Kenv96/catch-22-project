@@ -16,12 +16,6 @@ db.init_app(app)
 # Setup models
 with app.app_context():
     db.create_all()   # run under the app context
-# a_user ={'name': 'mogli', 'email':'mogli@uncc.edu'}   
-#notes
-#notes = {1: {'title': 'First note', 'text': 'This is my first note', 'date': '10-1-2020'},
-#             2: {'title': 'Second note', 'text': 'This is my second note', 'date': '10-2-2020'},
-#             3: {'title': 'Third note', 'text': 'This is my third note', 'date': '10-3-2020'}
-#             }
 
 # @app.route is a decorator. It gives the function "index" special powers.
 # In this case it makes it so anyone going to "your-url/" makes this function
@@ -31,13 +25,13 @@ with app.app_context():
 @app.route('/index')
 def index():
     #get user from database
-    a_user = db.session.query(User).filter_by(email='mogli@uncc.edu').one()
+    a_user = db.session.query(User).filter_by(email='user@uncc.edu').one()
     return render_template('index.html',user = a_user)
 
 @app.route('/notes')
 def get_notes():
     #retrieve user from database
-    a_user = db.session.query(User).filter_by(email='mogli@uncc.edu').one()
+    a_user = db.session.query(User).filter_by(email='user@uncc.edu').one()
     #retrieve notes from database
     my_notes = db.session.query(Note).all()
     return render_template('notes.html', notes=my_notes, user = a_user)
@@ -45,7 +39,7 @@ def get_notes():
 @app.route('/notes/<note_id>')
 def get_note(note_id):
     #retrieve user from database
-    a_user = db.session.query(User).filter_by(email='mogli@uncc.edu').one()
+    a_user = db.session.query(User).filter_by(email='user@uncc.edu').one()
     #retrieve note from data base
     my_note = db.session.query(Note).filter_by(id=note_id).one()
     return render_template('note.html', note=my_note, user = a_user)
@@ -70,7 +64,7 @@ def new_note():
     else:
         #GET request - show new note from
         #request - show new not form
-        a_user = db.session.query(User).filter_by(email='mogli@uncc.edu').one()
+        a_user = db.session.query(User).filter_by(email='user@uncc.edu').one()
         return render_template('new.html', user=a_user)
     
 @app.route('/notes/edit/<note_id>', methods=['GET', 'POST'])
@@ -92,7 +86,7 @@ def update_note(note_id):
     else:
         #GET request - show new note form to edit note
         # retrieve user from database
-        a_user = db.session.query(User).filter_by(email ='mogli@uncc.edu').one()
+        a_user = db.session.query(User).filter_by(email ='user@uncc.edu').one()
         # retrive note from database
         my_note = db.session.query(Note).filter_by(id=note_id).one()
 
@@ -107,7 +101,7 @@ def delete_note(note_id):
     return redirect(url_for('get_notes'))
 
 
-app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=False)
+app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 8080)),debug=False)
 
 # Note that we are running with "debug=True", so if you make changes and save it
 # the server will automatically update. This is great for development but is a
