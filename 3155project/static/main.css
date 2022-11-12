@@ -1,0 +1,13 @@
+html{
+	text-align: center;
+}
+body {
+    padding: 30px 30px;
+    }
+h1{
+    color:blue;
+}
+h2{
+    color:red;
+    background:linear-gradient(-80deg, #015680, #409ee2, #44cecf, #567aab);
+}
