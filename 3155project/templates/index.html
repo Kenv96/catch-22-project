@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="UNCC Notes App">
-        <title>UNCC Notes App</title>
-        <!-- styles -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-    </head>
-	<nav>
-	<a href="/index"> Home </a> ||
-	<a href="/notes"> My notes</a> ||
-	<a href="/notes/new"> Add notes</a>
-	</nav>
-    <body>
 
-        <h1>Welcome {{user.name}} to the Catch-22 Project Management Tool!</h1>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="UNCC Notes App">
+    <title>UNCC Notes App</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<nav>
+    <a href="/index" class="menu">Home</a>
+    <a href="/notes" class="menu">My notes</a>
+    <a href="/notes/new" class="menu">Add notes</a>
+</nav>
 
-        <h2>Use this site to maintain and organize your notes.</h2>
+<body>
 
-    </body>
+    <h1>Welcome {{user.name}} to the Catch-22 Project Management Tool!</h1>
+
+    <h2>Use this site to maintain and organize your notes.</h2>
+
+</body>
+
 </html>
