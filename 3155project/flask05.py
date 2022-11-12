@@ -16,12 +16,6 @@ db.init_app(app)
 # Setup models
 with app.app_context():
     db.create_all()   # run under the app context
-# a_user ={'name': 'mogli', 'email':'mogli@uncc.edu'}   
-#notes
-#notes = {1: {'title': 'First note', 'text': 'This is my first note', 'date': '10-1-2020'},
-#             2: {'title': 'Second note', 'text': 'This is my second note', 'date': '10-2-2020'},
-#             3: {'title': 'Third note', 'text': 'This is my third note', 'date': '10-3-2020'}
-#             }
 
 # @app.route is a decorator. It gives the function "index" special powers.
 # In this case it makes it so anyone going to "your-url/" makes this function
