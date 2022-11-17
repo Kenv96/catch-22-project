@@ -9,7 +9,7 @@ from models import Note as Note
 from models import User as User
 
 app = Flask(__name__)     # create an app
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_project_app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
 #  Bind SQLAlchemy db object to this Flask app
 db.init_app(app)
@@ -25,13 +25,13 @@ with app.app_context():
 @app.route('/index')
 def index():
     #get user from database
-    a_user = db.session.query(User).filter_by(email='mogli@uncc.edu').one()
+    a_user = db.session.query(User).filter_by(email='user@uncc.edu').one()
     return render_template('index.html',user = a_user)
 
 @app.route('/notes')
 def get_notes():
     #retrieve user from database
-    a_user = db.session.query(User).filter_by(email='mogli@uncc.edu').one()
+    a_user = db.session.query(User).filter_by(email='user@uncc.edu').one()
     #retrieve notes from database
     my_notes = db.session.query(Note).all()
     return render_template('notes.html', notes=my_notes, user = a_user)
@@ -39,7 +39,7 @@ def get_notes():
 @app.route('/notes/<note_id>')
 def get_note(note_id):
     #retrieve user from database
-    a_user = db.session.query(User).filter_by(email='mogli@uncc.edu').one()
+    a_user = db.session.query(User).filter_by(email='user@uncc.edu').one()
     #retrieve note from data base
     my_note = db.session.query(Note).filter_by(id=note_id).one()
     return render_template('note.html', note=my_note, user = a_user)
@@ -64,7 +64,7 @@ def new_note():
     else:
         #GET request - show new note from
         #request - show new not form
-        a_user = db.session.query(User).filter_by(email='mogli@uncc.edu').one()
+        a_user = db.session.query(User).filter_by(email='user@uncc.edu').one()
         return render_template('new.html', user=a_user)
     
 @app.route('/notes/edit/<note_id>', methods=['GET', 'POST'])
@@ -86,7 +86,7 @@ def update_note(note_id):
     else:
         #GET request - show new note form to edit note
         # retrieve user from database
-        a_user = db.session.query(User).filter_by(email ='mogli@uncc.edu').one()
+        a_user = db.session.query(User).filter_by(email ='user@uncc.edu').one()
         # retrive note from database
         my_note = db.session.query(Note).filter_by(id=note_id).one()
 
