@@ -7,7 +7,7 @@
 
 3)set up venv
 source venv/Scripts/activate(gitbash)
-venv/Scripts/activate.bat(Comand Prompt)
+venv/Scripts/activate.bat(Command Prompt)
 
 4) to use flask run
 export FLASK_APP=name-of-app
