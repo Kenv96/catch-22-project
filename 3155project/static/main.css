@@ -70,7 +70,7 @@ tbody tr:nth-child(odd) {
     background-color: lightseagreen;
 }
 
-input {
+#delete-button {
 
     color: rgb(56, 152, 216);
     background-color: aquamarine;
@@ -80,7 +80,7 @@ input {
     border-left: 2px solid white;
 }
 
-input:hover {
+#delete-button:hover {
     background-color: gray;
     border-top: none;
     border-left: none;

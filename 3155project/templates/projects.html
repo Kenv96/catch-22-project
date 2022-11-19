@@ -32,7 +32,7 @@
                 <td><a href="{{url_for('update_project', project_id=note.id)}}">Edit</a></td>
                 <td>
                     <form action="{{url_for('delete_project', project_id=note.id)}}" method="post">
-                        <input type="submit" value="Delete">
+                        <input id="delete-button" type="submit" value="Delete">
                     </form>
                 </td>
             </tr>
