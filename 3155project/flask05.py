@@ -95,13 +95,13 @@ def update_project(project_id):
 @app.route('/projects/delete/<project_id>', methods=['POST'])
 def delete_project(project_id):
     #retrieve note from database
-    my_note = db.session.query(Note).filter_by(id=project_id).one()
+    my_note = db.session.query(Note).filter_by(id=note_id).one()
     db.session.delete(my_note)
     db.session.commit()
     return redirect(url_for('get_projects'))
 
 
-app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=False)
+app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 8080)),debug=False)
 
 # Note that we are running with "debug=True", so if you make changes and save it
 # the server will automatically update. This is great for development but is a
