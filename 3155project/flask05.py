@@ -29,7 +29,7 @@ def index():
     return render_template('index.html',user = a_user)
 
 @app.route('/notes')
-def get_notes():
+def get_projects():
     #retrieve user from database
     a_user = db.session.query(User).filter_by(email='user@uncc.edu').one()
     #retrieve notes from database
@@ -37,7 +37,7 @@ def get_notes():
     return render_template('notes.html', notes=my_notes, user = a_user)
 
 @app.route('/notes/<note_id>')
-def get_note(note_id):
+def get_project(note_id):
     #retrieve user from database
     a_user = db.session.query(User).filter_by(email='user@uncc.edu').one()
     #retrieve note from data base
@@ -45,7 +45,7 @@ def get_note(note_id):
     return render_template('note.html', note=my_note, user = a_user)
 
 @app.route('/notes/new', methods=['GET', 'POST'])
-def new_note():
+def new_project():
     #check method used for request
     if request.method == 'POST':
         # get title data
@@ -68,7 +68,7 @@ def new_note():
         return render_template('new.html', user=a_user)
     
 @app.route('/notes/edit/<note_id>', methods=['GET', 'POST'])
-def update_note(note_id):
+def update_project(note_id):
     #check method used for request
     if request.method == 'POST':
         #get title data
@@ -93,7 +93,7 @@ def update_note(note_id):
         return render_template('new.html', note=my_note, user=a_user)
 
 @app.route('/notes/delete/<note_id>', methods=['POST'])
-def delete_note(note_id):
+def delete_project(note_id):
     #retrieve note from database
     my_note = db.session.query(Note).filter_by(id=note_id).one()
     db.session.delete(my_note)
