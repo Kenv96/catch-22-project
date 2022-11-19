@@ -101,7 +101,7 @@ def delete_project(project_id):
     return redirect(url_for('get_projects'))
 
 
-app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 8080)),debug=False)
+app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=False)
 
 # Note that we are running with "debug=True", so if you make changes and save it
 # the server will automatically update. This is great for development but is a
