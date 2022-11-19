@@ -32,6 +32,8 @@ a:visited {
     border-radius: 2px;
     border-top: 2px solid white;
     border-left: 2px solid white;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
 a:hover {
@@ -44,4 +46,44 @@ a:hover {
 
 .menu {
     color: #04330c
+}
+
+
+table {
+    border-collapse: collapse;
+
+    width: 100%;
+}
+
+th,
+td {
+    color: black;
+    text-align: left;
+    padding: 8px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: Lightgreen;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: lightseagreen;
+}
+
+input {
+
+    color: rgb(56, 152, 216);
+    background-color: aquamarine;
+    padding: 5px 5px;
+    border-radius: 2px;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+}
+
+input:hover {
+    background-color: gray;
+    border-top: none;
+    border-left: none;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
 }
