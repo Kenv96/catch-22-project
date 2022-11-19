@@ -1,13 +1,47 @@
-html{
-	text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto+Slab:wght@300&display=swap');
+
+html {
+    text-align: center;
+    background: linear-gradient(80deg, #061b2b, #04330c);
+    background-size: 200%;
+    color: rgb(56, 152, 216);
 }
+
 body {
+    font-family: 'Roboto Mono', monospace;
     padding: 30px 30px;
-    }
-h1{
-    color:blue;
 }
-h2{
-    color:red;
-    background:linear-gradient(-80deg, #015680, #409ee2, #44cecf, #567aab);
+
+h1 {
+    font-family: 'Roboto Slab', serif;
+    color: rgb(37, 160, 241);
+}
+
+h2 {
+    font-family: 'Roboto Slab', serif;
+    color: rgb(56, 152, 216);
+
+}
+
+a,
+a:visited {
+
+    color: rgb(56, 152, 216);
+    background-color: aquamarine;
+    padding: 5px 5px;
+    border-radius: 2px;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+}
+
+a:hover {
+    background-color: gray;
+    border-top: none;
+    border-left: none;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+.menu {
+    color: #04330c
 }
