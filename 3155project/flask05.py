@@ -95,7 +95,7 @@ def update_project(project_id):
 @app.route('/projects/delete/<project_id>', methods=['POST'])
 def delete_project(project_id):
     #retrieve note from database
-    my_note = db.session.query(Note).filter_by(id=note_id).one()
+    my_note = db.session.query(Note).filter_by(id=project_id).one()
     db.session.delete(my_note)
     db.session.commit()
     return redirect(url_for('get_projects'))
