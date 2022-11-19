@@ -28,23 +28,23 @@ def index():
     a_user = db.session.query(User).filter_by(email='user@uncc.edu').one()
     return render_template('index.html',user = a_user)
 
-@app.route('/notes')
+@app.route('/projects')
 def get_projects():
     #retrieve user from database
     a_user = db.session.query(User).filter_by(email='user@uncc.edu').one()
     #retrieve notes from database
     my_notes = db.session.query(Note).all()
-    return render_template('notes.html', notes=my_notes, user = a_user)
+    return render_template('projects.html', notes=my_notes, user = a_user)
 
-@app.route('/notes/<note_id>')
-def get_project(note_id):
+@app.route('/projects/<project_id>')
+def get_project(project_id):
     #retrieve user from database
     a_user = db.session.query(User).filter_by(email='user@uncc.edu').one()
     #retrieve note from data base
-    my_note = db.session.query(Note).filter_by(id=note_id).one()
-    return render_template('note.html', note=my_note, user = a_user)
+    my_note = db.session.query(Note).filter_by(id=project_id).one()
+    return render_template('project.html', note=my_note, user = a_user)
 
-@app.route('/notes/new', methods=['GET', 'POST'])
+@app.route('/projects/new', methods=['GET', 'POST'])
 def new_project():
     #check method used for request
     if request.method == 'POST':
@@ -74,7 +74,7 @@ def update_project(note_id):
         #get title data
         title = request.form['title']
         #get note data
-        text = request.form['noteText']
+        text = request.form['projectText']
         note = db.session.query(Note).filter_by(id=note_id).one()
         #update note data
         note.title = title
@@ -82,7 +82,7 @@ def update_project(note_id):
         #update note in DB
         db.session.add(note)
         db.session.commit()
-        return redirect(url_for('get_notes'))
+        return redirect(url_for('get_projects'))
     else:
         #GET request - show new note form to edit note
         # retrieve user from database
