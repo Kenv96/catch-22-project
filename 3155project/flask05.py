@@ -75,7 +75,7 @@ def update_project(project_id):
         title = request.form['title']
         #get note data
         text = request.form['projectText']
-        note = db.session.query(Note).filter_by(id=note_id).one()
+        note = db.session.query(Note).filter_by(id=project_id).one()
         #update note data
         note.title = title
         note.text = text
@@ -88,14 +88,14 @@ def update_project(project_id):
         # retrieve user from database
         a_user = db.session.query(User).filter_by(email ='user@uncc.edu').one()
         # retrive note from database
-        my_note = db.session.query(Note).filter_by(id=note_id).one()
+        my_note = db.session.query(Note).filter_by(id=project_id).one()
 
         return render_template('new.html', note=my_note, user=a_user)
 
 @app.route('/projects/delete/<project_id>', methods=['POST'])
 def delete_project(project_id):
     #retrieve note from database
-    my_note = db.session.query(Note).filter_by(id=note_id).one()
+    my_note = db.session.query(Note).filter_by(id=project_id).one()
     db.session.delete(my_note)
     db.session.commit()
     return redirect(url_for('get_projects'))
