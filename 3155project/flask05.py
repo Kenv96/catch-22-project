@@ -60,7 +60,7 @@ def new_project():
         new_record = Note(title, text, today)
         db.session.add(new_record)
         db.session.commit()
-        return redirect(url_for('get_notes'))
+        return redirect(url_for('get_projects'))
     else:
         #GET request - show new note from
         #request - show new not form
