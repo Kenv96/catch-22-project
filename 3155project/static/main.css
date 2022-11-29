@@ -4,7 +4,7 @@ html {
     text-align: center;
     background: linear-gradient(80deg, #061b2b, #04330c);
     background-size: 200%;
-    color: rgb(56, 152, 216);
+    color: rgb(15, 69, 105);
 }
 
 body {
@@ -26,7 +26,7 @@ h2 {
 a,
 a:visited {
 
-    color: rgb(56, 152, 216);
+    color: rgb(22, 66, 95);
     background-color: aquamarine;
     padding: 5px 5px;
     border-radius: 2px;
@@ -72,8 +72,8 @@ tbody tr:nth-child(odd) {
 
 #delete-button {
 
-    color: rgb(56, 152, 216);
-    background-color: aquamarine;
+    color: rgb(10, 39, 58);
+    background-color: rgb(250, 47, 44);
     padding: 5px 5px;
     border-radius: 2px;
     border-top: 2px solid white;
