@@ -51,7 +51,7 @@ def new_project():
         # get title data
         title = request.form['title']
         #get note data
-        text = request.form['noteText']
+        text = request.form['projectText']
         # create date stamp
         from datetime import date
         today = date.today()
