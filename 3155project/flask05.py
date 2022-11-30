@@ -3,7 +3,7 @@ import os                 # os is used to get environment variables IP & PORT
 from flask import Flask   # Flask is the web app that we will customize
 from flask import render_template # render the HTML
 from flask import request # checking request
-from flask import redirect, url_for # send the reuest to another function to complete response
+from flask import redirect, url_for # send the request to another function to complete response
 from database import db
 from models import Note as Note
 from models import User as User
