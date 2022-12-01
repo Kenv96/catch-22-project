@@ -11,8 +11,8 @@
         <div class="navdiv">
 
             <nav>
-                <a href="{{ url_for('index') }}"> Home</a> ||
-                <a href="{{ url_for('get_projects') }}"> My Projects</a> ||
+                <a href="{{ url_for('index') }}"> Home</a>
+                <a href="{{ url_for('get_projects') }}"> My Projects</a>
                 <a href="{{ url_for('new_project') }}">Add Project</a>
             </nav>
             {% if user %}
@@ -21,7 +21,7 @@
             </nav>
             {% else %}
             <nav>
-                <a href="{{ url_for('login') }}"> Login</a> ||
+                <a href="{{ url_for('login') }}"> Login</a>
                 <a href="{{ url_for('register') }}"> Register</a>
             </nav>
             {% endif %}

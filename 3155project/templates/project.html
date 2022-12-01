@@ -14,6 +14,17 @@
     <a href="/projects">My projects</a>
     <a href="/projects/new">Add project</a>
 </nav>
+            {% if user %}
+            <nav>
+                <a href="{{ url_for('logout') }}"> Logout</a>
+            </nav>
+            {% else %}
+            <nav>
+                <a href="{{ url_for('login') }}"> Login</a>
+                <a href="{{ url_for('register') }}"> Register</a>
+            </nav>
+            {% endif %}
+            </div>
 
 <body>
     <h1>Welcome {{user.name}} to the Catch-22 Project Management Tool!</h1>
@@ -26,9 +37,9 @@
             <th>Date</th>
         </tr>
         <tr>
-            <td>{{ note.title }}</td>
-            <td>{{ note.text }}</td>
-            <td>{{ note.date }}</td>
+            <td>{{ project.title }}</td>
+            <td>{{ project.text }}</td>
+            <td>{{ project.date }}</td>
         </tr>
     </table>
 </body>
