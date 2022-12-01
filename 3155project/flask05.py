@@ -39,7 +39,7 @@ def index():
 def get_projects():
     #check if saved in session
     if session.get('user'):
-        #get notes from database
+        #get projects from database
         my_projects = db.session.query(Project).filter_by(user_id=session['user_id']).all()
 
         return render_template('projects.html', projects=my_projects, user=session['user'])
@@ -50,7 +50,7 @@ def get_projects():
 def get_project(project_id):
     # check if saved in session
     if session.get('user'):
-        #get note from database
+        #get project from database
         my_project = db.session.query(Project).filter_by(id=project_id, user_id=session['user_id']).one()
 
         form = CommentForm()
@@ -67,21 +67,21 @@ def update_project(project_id):
         if request.method == 'POST':
             #get title
             title = request.form['title']
-            #get note data
+            #get project data
             text = request.form['projectText']
             project = db.session.query(Project).filter_by(id=project_id).one()
-            #update note data
+            #update project data
             project.title = title
             project.text = text
-            #update note in db
+            #update project in db
             db.session.add(project)
             db.session.commit()
 
             return redirect(url_for('get_projects'))
         else:
-            #get request - show new note form to edit note
+            #get request - show new project form to edit project
 
-            #get note from database
+            #get project from database
             my_project = db.session.query(Project).filter_by(id=project_id).one()
 
             return render_template('new.html', project=my_project, user=session['user'])
@@ -98,7 +98,7 @@ def new_project():
         if request.method == 'POST':
             #get title data
             title = request.form['title']
-            #get note data
+            #get project data
             text = request.form['projectText']
             #create data stamp
             from datetime import date
@@ -111,7 +111,7 @@ def new_project():
 
             return redirect(url_for('get_projects'))
         else:
-            #Get request - show new note form
+            #Get request - show new project form
 
             return render_template('new.html', user=session['user'])
     else:
@@ -122,7 +122,7 @@ def new_project():
 def delete_project(project_id):
     # check if a user is saved in session
     if session.get('user'):
-        #get note from database
+        #get project from database
         my_project = db.session.query(Project).filter_by(id=project_id).one()
         db.session.delete(my_project)
         db.session.commit()
@@ -210,6 +210,6 @@ app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 8080)), deb
 # To see the web page in your web browser, go to the url,
 #   http://127.0.0.1:5000
 
-# Note that we are running with "debug=True", so if you make changes and save it
+# project that we are running with "debug=True", so if you make changes and save it
 # the server will automatically update. This is great for development but is a
 # security risk for production.
