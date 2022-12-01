@@ -14,10 +14,19 @@
     <a href="/projects">My projects</a>
     <a href="/projects/new">Add project</a>
 </nav>
-
+{% if user %}
+        <nav>
+            <a href="{{ url_for('logout') }}"> Logout</a>
+        </nav>
+        {% else %}
+        <nav>
+            <a href="{{ url_for('login') }}"> Login</a> ||
+            <a href="{{ url_for('register') }}"> Register</a>
+        </nav>
+        {% endif %}
 <body>
 
-    <h1>Welcome {{user.name}} to the Catch-22 Project Management Tool!</h1>
+    <h1>Welcome {{user}} to the Catch-22 Project Management Tool!</h1>
 
     <h2>Use this site to maintain and organize your projects.</h2>
 
