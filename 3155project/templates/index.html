@@ -10,20 +10,22 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <nav>
-    <a href="/index">Home</a>
-    <a href="/projects">My projects</a>
-    <a href="/projects/new">Add project</a>
+    <a class="nav-buttons" href="/index">Home</a>
+    <a class="nav-buttons" href="/projects">My projects</a>
+    <a class="nav-buttons" href="/projects/new">Add project</a>
 </nav>
+<br>
 {% if user %}
-        <nav>
-            <a href="{{ url_for('logout') }}"> Logout</a>
-        </nav>
-        {% else %}
-        <nav>
-            <a href="{{ url_for('login') }}"> Login</a> ||
-            <a href="{{ url_for('register') }}"> Register</a>
-        </nav>
-        {% endif %}
+<nav>
+    <a class="nav-buttons" href="{{ url_for('logout') }}"> Logout</a>
+</nav>
+{% else %}
+<nav>
+    <a class="nav-buttons" href="{{ url_for('login') }}"> Login</a> ||
+    <a class="nav-buttons" href="{{ url_for('register') }}"> Register</a>
+</nav>
+{% endif %}
+
 <body>
 
     <h1>Welcome {{user}} to the Catch-22 Project Management Tool!</h1>
