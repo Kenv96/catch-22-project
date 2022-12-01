@@ -1,15 +1,20 @@
 from database import db
+import datetime
 
 class Project(db.Model):
     id = db.Column("id", db.Integer, primary_key=True)
     title = db.Column("title", db.String(200))
     text = db.Column("text", db.String(100))
     date = db.Column("date", db.String(50))
+    #make a ForeignKey key; referencing the id varibale in the user class so its lowercase
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    comments = db.relationship("Comment", backref="project", cascade="all, delete-orphan", lazy=True)
 
-    def __init__(self, title, text, date):
+    def __init__(self, title, text, date, user_id):
         self.title = title
         self.text = text
         self.date = date
+        self.user_id = user_id
 
 class User(db.Model):
     id = db.Column("id", db.Integer, primary_key=True)
