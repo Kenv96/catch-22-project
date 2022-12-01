@@ -26,6 +26,16 @@ h2 {
 a,
 a:visited {
 
+    color: #061b2b;
+}
+
+a:hover {
+    color: rgb(56, 152, 216);
+}
+
+/* nav button css */
+.nav-buttons,
+.nav-buttons:visited {
     color: rgb(56, 152, 216);
     background-color: aquamarine;
     padding: 5px 5px;
@@ -34,14 +44,17 @@ a:visited {
     border-left: 2px solid white;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
+    position: relative;
+
 }
 
-a:hover {
+.nav-buttons:hover {
     background-color: gray;
     border-top: none;
     border-left: none;
     border-right: 2px solid white;
     border-bottom: 2px solid white;
+
 }
 
 .menu {
@@ -70,7 +83,7 @@ tbody tr:nth-child(odd) {
     background-color: lightseagreen;
 }
 
-input {
+input[type=button] {
 
     color: rgb(56, 152, 216);
     background-color: aquamarine;
@@ -80,7 +93,7 @@ input {
     border-left: 2px solid white;
 }
 
-input:hover {
+input[type=button]:hover {
     background-color: gray;
     border-top: none;
     border-left: none;
