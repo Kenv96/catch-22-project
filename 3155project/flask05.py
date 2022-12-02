@@ -118,16 +118,17 @@ def new_project():
         #user is not in session redirect
         return redirect(url_for('login'))
 
-@app.route('/projects/project/<project_id>')
+@app.route('/projects/project/<project_id>', methods=['GET', 'POST'])
 def delete_project(project_id):
     # check if a user is saved in session
     if session.get('user'):
-        #get project from database
-        my_project = db.session.query(Project).filter_by(id=project_id).one()
-        db.session.delete(my_project)
-        db.session.commit()
+        if request.method == 'POST':
+            #get project from database
+            my_project = db.session.query(Project).filter_by(id=project_id).one()
+            db.session.delete(my_project)
+            db.session.commit()
 
-        return redirect(url_for('get_projects'))
+            return redirect(url_for('get_projects'))
     else:
         #user is not signed in
         return redirect(url_for('login'))
