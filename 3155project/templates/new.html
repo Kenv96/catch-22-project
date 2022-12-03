@@ -10,8 +10,8 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <nav>
-	<a class="nav-buttons" href="/index">Home</a>
-	<a class="nav-buttons" href="/projects">My projects</a>
+	<a class="nav-buttons" href="/index">Home</a> ||
+	<a class="nav-buttons" href="/projects">My projects</a> ||
 	<a class="nav-buttons" href="/projects/new">Add project</a>
 </nav>
 {% if user %}
@@ -21,7 +21,7 @@
 </nav>
 {% else %}
 <nav>
-	<a href="{{ url_for('login') }}"> Login</a>
+	<a href="{{ url_for('login') }}"> Login</a> ||
 	<a href="{{ url_for('register') }}"> Register</a>
 </nav>
 {% endif %}
