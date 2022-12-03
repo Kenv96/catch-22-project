@@ -20,6 +20,7 @@
         <br>
         {% if user %}
         <nav>
+            <a class="nav-buttons" href="/to_do_list">To do list</a> ||
             <a class="nav-buttons" class="nav-buttons" href="{{ url_for('logout') }}"> Logout</a>
         </nav>
         {% else %}

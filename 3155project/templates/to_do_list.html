@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="UNCC Notes App">
+    <title>Catch 22</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 </head>
+<nav>
+    <a class="nav-buttons" href="/index">Home</a> ||
+    <a class="nav-buttons" href="/projects">My projects</a> ||
+    <a class="nav-buttons" href="/projects/new">Add project</a>
+</nav>
+<br>
+{% if user %}
+<nav>
+    <a class="nav-buttons" href="/to_do_list">To do list</a> ||
+    <a class="nav-buttons" href="{{ url_for('logout') }}"> Logout</a>
+</nav>
+{% else %}
+<nav>
+    <a class="nav-buttons" href="{{ url_for('login') }}"> Login</a> ||
+    <a class="nav-buttons" href="{{ url_for('register') }}"> Register</a>
+</nav>
+{% endif %}
+
 <body>
 
+    <h1>Welcome {{user}} to the Catch-22 Project Management Tool!</h1>
+
+    <h2>Use this site to maintain and organize your projects.</h2>
+
+    <h3>To do list</h3>
+
 </body>
+
 </html>

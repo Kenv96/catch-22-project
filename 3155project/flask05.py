@@ -206,6 +206,15 @@ def new_comment(project_id):
     else:
         return redirect(url_for('login'))
 
+@app.route('/to_do_list')
+def toDoList():
+    #check if a user is saved in session
+    if session.get('user'):
+        return render_template('to_do_list.html', user=session['user'])
+
+    else:
+        return redirect(url_for('login'))
+
 app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 8080)), debug=True)
 
 # To see the web page in your web browser, go to the url,
