@@ -51,8 +51,13 @@
 <h2>Comments</h2>
 <ul>
   {% for task in project.tasks %}
-  <input type="checkbox">
-  <li>{{ task.content }}</li>
+
+  <li>
+    {{ task.content }}
+    <form action="{{ url_for('remove_task', task_id=task.id) }}" method="post">
+      <input type="checkbox"> Done
+  </form>
+  </li>
   {% endfor %}
 </ul>
 {% endif %}

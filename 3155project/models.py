@@ -9,6 +9,7 @@ class Project(db.Model):
     #make a ForeignKey key; referencing the id varibale in the user class so its lowercase
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     comments = db.relationship("Comment", backref="project", cascade="all, delete-orphan", lazy=True)
+    tasks = db.relationship("Task", backref="project", cascade="all, delete-orphan", lazy=True)
 
     def __init__(self, title, text, date, user_id):
         self.title = title
@@ -25,6 +26,7 @@ class User(db.Model):
     registered_on = db.Column(db.DateTime, nullable=False)
     projects = db.relationship("Project", backref="user", lazy=True)
     comments = db.relationship("Comment", backref="user", lazy=True)
+    tasks = db.relationship("Task", backref="user", lazy=True)
 
     def __init__(self, first_name, last_name, email, password):
         self.first_name = first_name
