@@ -1,5 +1,7 @@
 # imports
-import os                 # os is used to get environment variables IP & PORT
+import os
+
+              # os is used to get environment variables IP & PORT
 import bcrypt
 from flask import Flask   # Flask is the web app that we will customize
 from flask import render_template
@@ -9,7 +11,8 @@ from database import db
 from models import User, Project
 from flask import session
 from models import Comment as Comment
-from forms import RegisterForm, LoginForm, CommentForm
+from models import Todo as Todo
+from forms import RegisterForm, LoginForm, CommentForm, TodoForm
 
 app = Flask(__name__)     # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_project_app.db'
@@ -54,6 +57,8 @@ def get_project(project_id):
         my_project = db.session.query(Project).filter_by(id=project_id, user_id=session['user_id']).one()
 
         form = CommentForm()
+
+        form = TodoForm()
 
         return render_template('project.html', project=my_project, user=session['user'], form=form)
     else:
@@ -198,6 +203,23 @@ def new_comment(project_id):
             # get comment data
             comment_text = request.form['comment']
             new_record = Comment(comment_text, int(project_id), session['user_id'])
+            db.session.add(new_record)
+            db.session.commit()
+
+        return redirect(url_for('get_project', project_id=project_id))
+
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/projects/<project_id>/addtodo', methods=['POST'])
+def new_todo(project_id):
+    if session.get('user'):
+        todo_form = TodoForm()
+        # validate_on_submit only validates using POST
+        if todo_form.validate_on_submit():
+            # get comment data
+            todo_text = request.form['todo']
+            new_record = Todo(todo_text, int(project_id), session['user_id'])
             db.session.add(new_record)
             db.session.commit()
 

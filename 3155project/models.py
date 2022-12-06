@@ -45,3 +45,16 @@ class Comment(db.Model):
         self.content = content
         self.project_id = project_id
         self.user_id = user_id
+
+class Todo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date_posted = db.Column(db.DateTime, nullable=False)
+    content = db.Column(db.VARCHAR, nullable=False)
+    project_id = db.Column(db.Integer, db.ForeignKey("project.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
+    def __init__(self, content, project_id, user_id):
+        self.date_posted = datetime.date.today()
+        self.content = content
+        self.project_id = project_id
+        self.user_id = user_id

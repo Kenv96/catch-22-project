@@ -92,5 +92,14 @@
   </tr>
 </table>
 
+<form action="{{ url_for('new_todo', project_id=project.id) }}" method="post">
+  <div class="formwrapper">
+    <h2 class="title">Add a task</h2>
+    <div class="form-field">
+      {{ form.todo.label }} <br /> {{ form.todo }}
+    </div>
+    {{ form.submit }}
+  </div>
+</form>
 
 </html>

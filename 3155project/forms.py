@@ -57,3 +57,11 @@ class CommentForm(FlaskForm):
     comment = TextAreaField('Comment',validators=[Length(min=1)])
 
     submit = SubmitField('Add Comment')
+
+class TodoForm(FlaskForm):
+    class Meta:
+        csrf = False
+
+    todo = TextAreaField('To-do',validators=[Length(min=1)])
+
+    submit = SubmitField('Add To-do')
