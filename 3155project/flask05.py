@@ -195,7 +195,7 @@ def logout():
 @app.route('/projects/<project_id>/comment', methods=['POST'])
 def new_comment(project_id):
     if session.get('user'):
-        comment_form = CommentForm()
+        comment_form = CommTodoForm()
         # validate_on_submit only validates using POST
         if comment_form.validate_on_submit():
             # get comment data
