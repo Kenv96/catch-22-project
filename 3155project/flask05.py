@@ -135,6 +135,21 @@ def delete_project(project_id):
         #user is not signed in
         return redirect(url_for('login'))
 
+@app.route('/projects/project/<task_id>', methods=['GET', 'POST'])
+def remove_task(task_id):
+    # check if a user is saved in session
+    if session.get('user'):
+        if request.method == 'POST':
+            #get task from database
+            my_task = db.session.query(Task).filter_by(id=task_id)
+            db.session.delete(my_task)
+            db.session.commit()
+
+            return redirect(url_for('get_project'))
+    else:
+        #user is not signed in
+        return redirect(url_for('login'))
+
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     form = RegisterForm()
@@ -221,9 +236,6 @@ def new_task(project_id):
             db.session.commit()
 
         return redirect(url_for('get_project', project_id=project_id))
-        if task_form.validate_on_submit():
-            if request.form['delete'] == True:
-                my_task = db.session.query(task).filter_by.one()
 
     else:
         return redirect(url_for('login'))

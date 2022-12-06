@@ -61,7 +61,7 @@ class CommentForm(FlaskForm):
 class TaskForm(FlaskForm):
     class Meta:
         csrf = False
-    delete = False
+
     task = TextAreaField('Task',validators=[Length(min=1)])
-    delete = True
+
     submit = SubmitField('Add Task')
