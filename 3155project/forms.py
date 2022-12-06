@@ -57,3 +57,11 @@ class CommentForm(FlaskForm):
     comment = TextAreaField('Comment',validators=[Length(min=1)])
 
     submit = SubmitField('Add Comment')
+
+class TaskForm(FlaskForm):
+    class Meta:
+        csrf = False
+    delete = False
+    task = TextAreaField('Task',validators=[Length(min=1)])
+    delete = True
+    submit = SubmitField('Add Task')

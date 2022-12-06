@@ -9,7 +9,8 @@ from database import db
 from models import User, Project
 from flask import session
 from models import Comment as Comment
-from forms import RegisterForm, LoginForm, CommentForm
+from models import Task as Task
+from forms import RegisterForm, LoginForm, CommentForm, TaskForm
 
 app = Flask(__name__)     # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_project_app.db'
@@ -54,8 +55,9 @@ def get_project(project_id):
         my_project = db.session.query(Project).filter_by(id=project_id, user_id=session['user_id']).one()
 
         form = CommentForm()
+        task_form = TaskForm()
 
-        return render_template('project.html', project=my_project, user=session['user'], form=form)
+        return render_template('project.html', project=my_project, user=session['user'], form=form, task_form=task_form)
     else:
         return redirect(url_for('login'))
 
@@ -206,14 +208,27 @@ def new_comment(project_id):
     else:
         return redirect(url_for('login'))
 
-@app.route('/to_do_list')
-def toDoList():
-    #check if a user is saved in session
+@app.route('/projects/<project_id>/task', methods=['POST'])
+def new_task(project_id):
     if session.get('user'):
-        return render_template('to_do_list.html', user=session['user'])
+        task_form = TaskForm()
+        # validate_on_submit only validates using POST
+        if task_form.validate_on_submit():
+            # get comment data
+            task_text = request.form['task']
+            new_record = Task(task_text, int(project_id), session['user_id'])
+            db.session.add(new_record)
+            db.session.commit()
+
+        return redirect(url_for('get_project', project_id=project_id))
+        if task_form.validate_on_submit():
+            if request.form['delete'] == True:
+                my_task = db.session.query(task).filter_by.one()
 
     else:
         return redirect(url_for('login'))
+
+
 
 app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 8080)), debug=True)
 

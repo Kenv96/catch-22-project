@@ -46,6 +46,30 @@
   </table>
 </body>
 
+{% if project.tasks %}
+{% if project.tasks|length > 0 %}
+<h2>Comments</h2>
+<ul>
+  {% for task in project.tasks %}
+  <input type="checkbox">
+  <li>{{ task.content }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endif %}
+
+<form action="{{ url_for('new_task', project_id=project.id) }}" method="post">
+  <div class="formwrapper">
+    <h2 class="title">Add a Task</h2>
+    <div class="form-field">
+      {{ task_form.task.label }} <br /> {{ task_form.task }}
+    </div>
+    {{ task_form.submit }}
+  </div>
+</form>
+
+
+
 {% if project.comments %}
 {% if project.comments|length > 0 %}
 <h2>Comments</h2>
