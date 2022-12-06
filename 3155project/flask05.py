@@ -12,7 +12,7 @@ from models import User, Project
 from flask import session
 from models import Comment as Comment
 from models import Todo as Todo
-from forms import RegisterForm, LoginForm, CommentForm, TodoForm
+from forms import RegisterForm, LoginForm, CommTodoForm
 
 app = Flask(__name__)     # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_project_app.db'
@@ -56,11 +56,9 @@ def get_project(project_id):
         #get project from database
         my_project = db.session.query(Project).filter_by(id=project_id, user_id=session['user_id']).one()
 
-        form = CommentForm()
+        form = CommTodoForm
 
-        form = TodoForm()
-
-        return render_template('project.html', project=my_project, user=session['user'], form=form)
+        return render_template('project.html', project=my_project, user=session['user'], form = form)
     else:
         return redirect(url_for('login'))
 
@@ -214,7 +212,7 @@ def new_comment(project_id):
 @app.route('/projects/<project_id>/addtodo', methods=['POST'])
 def new_todo(project_id):
     if session.get('user'):
-        todo_form = TodoForm()
+        todo_form = CommTodoForm()
         # validate_on_submit only validates using POST
         if todo_form.validate_on_submit():
             # get comment data

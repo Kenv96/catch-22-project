@@ -50,18 +50,14 @@ class LoginForm(FlaskForm):
         if db.session.query(User).filter_by(email=field.data).count() == 0:
             raise ValidationError('Incorrect username or password.')
 
-class CommentForm(FlaskForm):
+class CommTodoForm(FlaskForm):
     class Meta:
         csrf = False
 
     comment = TextAreaField('Comment',validators=[Length(min=1)])
 
-    submit = SubmitField('Add Comment')
-
-class TodoForm(FlaskForm):
-    class Meta:
-        csrf = False
+    Csubmit = SubmitField('Add Comment')
 
     todo = TextAreaField('To-do',validators=[Length(min=1)])
 
-    submit = SubmitField('Add To-do')
+    Tsubmit = SubmitField('Add To-do')
