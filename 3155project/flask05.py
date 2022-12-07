@@ -135,17 +135,18 @@ def delete_project(project_id):
         #user is not signed in
         return redirect(url_for('login'))
 
-@app.route('/projects/project/<task_id>', methods=['GET', 'POST'])
-def remove_task(task_id):
+@app.route('/projects/<project_id>/<task_id>', methods=['GET', 'POST'])
+def remove_task(project_id, task_id):
     # check if a user is saved in session
     if session.get('user'):
         if request.method == 'POST':
             #get task from database
-            my_task = db.session.query(Task).filter_by(id=task_id)
+            my_task = db.session.query(Task).filter_by(id=task_id).one()
             db.session.delete(my_task)
             db.session.commit()
 
-            return redirect(url_for('get_project'))
+            return redirect(url_for('get_project', project_id=project_id))
+
     else:
         #user is not signed in
         return redirect(url_for('login'))

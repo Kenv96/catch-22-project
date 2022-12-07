@@ -48,20 +48,28 @@
 
 {% if project.tasks %}
 {% if project.tasks|length > 0 %}
-<h2>Comments</h2>
-<ul>
-  {% for task in project.tasks %}
+  <h1>To-do list</h1>
+ <table>
+        <tbody>
+            <tr>
+                <th>Tasks</th>
+                <th colspan="3">Description</th>
+            </tr>
+              {% for task in project.tasks %}
+            <tr>
+              <td>
+                <form action="{{url_for('remove_task', project_id=project.id, task_id=task.id)}}" method="post">
+                  {{task.id}} <input type="submit" value="Done" >
+                </form>
+              </td>
+              <td>{{ task.content }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% endif %}
 
-  <li>
-    {{ task.content }}
-    <form action="{{ url_for('remove_task', task_id=task.id) }}" method="post">
-      <input type="checkbox"> Done
-  </form>
-  </li>
-  {% endfor %}
-</ul>
-{% endif %}
-{% endif %}
 
 <form action="{{ url_for('new_task', project_id=project.id) }}" method="post">
   <div class="formwrapper">
@@ -78,13 +86,29 @@
 {% if project.comments %}
 {% if project.comments|length > 0 %}
 <h2>Comments</h2>
-<ul>
-  {% for comment in project.comments %}
-  <li>{{ comment.content }}</li>
-  {% endfor %}
-</ul>
+ <table>
+        <tbody>
+            <tr>
+                <th>Comments</th>
+                <th colspan="3"></th>
+            </tr>
+              {% for comment in project.comments %}
+            <tr>
+
+
+              <td>{{ comment.content }}</td>
+              <td>
+              </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endif %}
 {% endif %}
+
+
+
+
 
 <form action="{{ url_for('new_comment', project_id=project.id) }}" method="post">
   <div class="formwrapper">
@@ -96,30 +120,6 @@
   </div>
 </form>
 
-<h1>To-do list</h1>
-<table id="task-table">
-  <tr>
-
-    <th>Tasks</th>
-    <th>Description</th>
-  </tr>
-
-
-
-  <tr>
-    <td>
-      <input type="checkbox"> Task 1
-    </td>
-    <td>
-      Do this and that
-    </td>
-  </tr>
-  <tr>
-    <td><input type="checkbox"> Task 2</td>
-
-    <td>Did I do that?</td>
-  </tr>
-</table>
 
 
 </html>
