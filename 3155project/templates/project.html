@@ -33,16 +33,18 @@
   <h2>Project Details:</h2>
 
   <table id="project-table">
-    <tr>
-      <th>Title</th>
-      <th>Text</th>
-      <th>Date</th>
-    </tr>
-    <tr>
-      <td>{{ project.title }}</td>
-      <td>{{ project.text }}</td>
-      <td>{{ project.date }}</td>
-    </tr>
+    <tbody id="project-table-body">
+      <tr class="project-table-row">
+        <th class="project-table-head">Title</th>
+        <th class="project-table-head">Text</th>
+        <th class="project-table-head">Date</th>
+      </tr>
+      <tr class="project-table-row">
+        <td class="project-table-column">{{ project.title }}</td>
+        <td class="project-table-column">{{ project.text }}</td>
+        <td class="project-table-column">{{ project.date }}</td>
+      </tr>
+    </tbody>
   </table>
 </body>
 

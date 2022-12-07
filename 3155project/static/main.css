@@ -62,24 +62,24 @@ a:hover {
 }
 
 
-table {
+#project-table {
     border-collapse: collapse;
 
     width: 100%;
 }
 
-th,
-td {
+.project-table-head,
+.project-table-column {
     color: black;
     text-align: left;
     padding: 8px;
 }
 
-tbody tr:nth-child(even) {
+#project-table-body .project-table-row:nth-child(even) {
     background-color: Lightgreen;
 }
 
-tbody tr:nth-child(odd) {
+#project-table-body .project-table-row:nth-child(odd) {
     background-color: lightseagreen;
 }
 
