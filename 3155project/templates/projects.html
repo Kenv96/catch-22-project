@@ -32,18 +32,20 @@
     <h1>Welcome {{user.name}} to the Catch-22 Project Management Tool!</h1>
     <h2>Listing Projects</h2>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Title</th>
-                <th colspan="3">Date</th>
+    <table class="project-table">
+        <tbody class="project-table-body">
+            <tr class="project-table-row">
+                <th class="project-table-head">Title</th>
+                <th class="project-table-head" colspan="3">Date</th>
             </tr>
             {% for project in projects %}
-            <tr>
-                <td><a href="{{url_for('get_project', project_id=project.id)}}">{{ project.title }}</a></td>
-                <td>{{ project.date }}</td>
-                <td><a href="{{url_for('update_project', project_id=project.id)}}">Edit</a></td>
-                <td>
+            <tr class="project-table-row">
+                <td class="project-table-column"><a href="{{url_for('get_project', project_id=project.id)}}">{{
+                        project.title }}</a></td>
+                <td class="project-table-column">{{ project.date }}</td>
+                <td class="project-table-column"><a href="{{url_for('update_project', project_id=project.id)}}">Edit</a>
+                </td>
+                <td class="project-table-column">
                     <form action="{{url_for('delete_project', project_id=project.id)}}" method="post">
                         <input type="submit" value="Delete">
                     </form>

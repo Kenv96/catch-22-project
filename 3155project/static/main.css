@@ -62,7 +62,7 @@ a:hover {
 }
 
 
-#project-table {
+.project-table {
     border-collapse: collapse;
 
     width: 100%;
@@ -75,11 +75,11 @@ a:hover {
     padding: 8px;
 }
 
-#project-table-body .project-table-row:nth-child(even) {
+.project-table-body .project-table-row:nth-child(even) {
     background-color: Lightgreen;
 }
 
-#project-table-body .project-table-row:nth-child(odd) {
+.project-table-body .project-table-row:nth-child(odd) {
     background-color: lightseagreen;
 }
 
