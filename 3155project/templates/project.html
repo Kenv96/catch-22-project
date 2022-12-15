@@ -60,7 +60,7 @@
     <tr>
       <td>
         <form action="{{url_for('remove_task', project_id=project.id, task_id=task.id)}}" method="post">
-          {{task.id}} <input type="submit" value="Done">
+          {{task.id}} <input id="done-button" type="submit" value="Done">
         </form>
       </td>
       <td>{{ task.content }}</td>
